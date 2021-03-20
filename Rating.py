@@ -68,5 +68,6 @@ for l in lists:
       k=0
       for item in v:
         rating=rate(v[k]['sku'])
+        print(rating,v[k]['url'])
         k+=1
     page_number+=1

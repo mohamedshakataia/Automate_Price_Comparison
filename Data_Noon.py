@@ -9,14 +9,17 @@ def connn():
 
 def category(w):
   conn,cur=connn()     
-  cur.execute("INSERT INTO category(Name) VALUES (%s)",(w))
+  cur.execute("INSERT INTO category(name) VALUES (%s)",(w))
   conn.commit()  
 
 def data(*v):
   conn,cur=connn()  
   for l in v:
-    v=l['offer_code'],l['sku'],l['name'],l['is_buyable'],l['price']
-    cur.execute("INSERT INTO Data_Noon(NoonID,sku,title,active,lastprice) VALUES (%s,%s,%s,%s,%s)",(v))
+    if l['sale_price']== None :
+      v=l['offer_code'],l['sku'],l['name'],l['is_buyable'],l['price']
+    else:
+      v=l['offer_code'],l['sku'],l['name'],l['is_buyable'],l['sale_price']
+    cur.execute("INSERT INTO noon(NoonID,sku,title,active,lastprice) VALUES (%s,%s,%s,%s,%s)",(v))
   conn.commit() 
 
 lists=[['electronics-and-mobiles/mobiles-and-accessories'],['electronics-and-mobiles/computers-and-accessories'],['electronics-and-mobiles/video-games-10181'],['electronics-and-mobiles/television-and-video'],['electronics-and-mobiles/camera-and-photo-16165'],['electronics-and-mobiles/portable-audio-and-video'],['electronics-and-mobiles/wearable-technology'],['electronics-and-mobiles/home-audio'],['electronics-and-mobiles/accessories-and-supplies']]
@@ -45,7 +48,7 @@ for l in lists:
     'sec-fetch-dest': 'empty',
     'referer': 'https://www.noon.com/egypt-en/electronics-and-mobiles/mobiles-and-accessories/mobiles-20905/apple',
     'accept-language': 'en-US,en;q=0.9,ar;q=0.8'}
-    payload={"brand":[],"category":l,"filterKey":[],"f":{},"sort":{"by":"popularity","dir":"desc"},"limit":1,"page":page_number}
+    payload={"brand":[],"category":l,"filterKey":[],"f":{},"sort":{"by":"popularity","dir":"desc"},"limit":50,"page":page_number}
     response = requests.request("POST", url, headers=headers, json=payload)
     if(response.status_code==429):
       time.sleep(9)
