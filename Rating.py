@@ -48,7 +48,7 @@ def rate(b):
     responserate=responserate.json()
     a=[responserate['summary']['rating']]
     conn,cur=connn()
-    cur.execute("INSERT INTO Rating(rate) VALUES(%s)",(a))
+    cur.execute("INSERT INTO noon(rate) VALUES(%s)",(a))
     conn.commit()
   return(a)
 
