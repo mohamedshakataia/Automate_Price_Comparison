@@ -3,7 +3,7 @@ import time
 import psycopg2
 
 def connn():
-  conn = psycopg2.connect(database='database', user='postgres', password='1999', host='localhost', port='5432')
+  conn = psycopg2.connect(database='data', user='postgres', password='1999', host='localhost', port='5432')
   cur = conn.cursor()
   return(conn,cur)
 
@@ -77,5 +77,4 @@ for l in lists:
     Datapayload()
     print(page_number)  
     page_number+=1
-    
-  
+

@@ -109,13 +109,3 @@ CREATE TABLE PriceHistory (
     ON DELETE SET NULL
 );
 
-
-INSERT INTO category (sweetName)VALUES('mobiles-and-accessories');
-INSERT INTO category (sweetName)VALUES('computers-and-accessories');
-INSERT INTO category (sweetName)VALUES('video-games-10181');
-INSERT INTO category (sweetName)VALUES('television-and-video');
-INSERT INTO category (sweetName)VALUES('camera-and-photo-16165');
-INSERT INTO category (sweetName)VALUES('portable-audio-and-video');
-INSERT INTO category (sweetName)VALUES('wearable-technology');
-INSERT INTO category (sweetName)VALUES('home-audio');
-INSERT INTO category (sweetName)VALUES('accessories-and-supplies');
